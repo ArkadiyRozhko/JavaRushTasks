@@ -22,3 +22,5 @@ target/
 /JavaRushPlugin.properties
 /Инструкция.png
 /out.log
+/.gitignore
+
