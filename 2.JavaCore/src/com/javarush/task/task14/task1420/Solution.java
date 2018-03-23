@@ -10,8 +10,15 @@ import java.io.InputStreamReader;
 public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int one,two;
 
-        System.out.println(Euclid(7920,594));
+            one = Integer.parseInt(reader.readLine());
+            two = Integer.parseInt(reader.readLine());
+            if (one <= 0 || two <= 0) {
+                throw new Exception();
+            }else {
+                System.out.println(Euclid(one,two));
+            }
 
     }
     static int Euclid(int a, int b){
