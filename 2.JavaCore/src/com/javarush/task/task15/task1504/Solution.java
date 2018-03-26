@@ -32,6 +32,11 @@ public class Solution {
 
             String output = "output";
             //Add your code here
+            if (author.equals("Mark Twain")){
+                output=markTwainOutput;
+            }else if (author.equals("Agatha Christie")) {
+                output=agathaChristieOutput;
+            }
 
             return output;
         }
@@ -42,8 +47,9 @@ public class Solution {
     }
     public static class MarkTwainBook extends Book{
         private String title;
-        public MarkTwainBook(String author) {
+        public MarkTwainBook(String title) {
             super("Mark Twain");
+            this.title=title;
         }
 
         @Override
@@ -58,8 +64,9 @@ public class Solution {
     }
     public static class AgathaChristieBook extends Book{
         private String title;
-        public AgathaChristieBook(String author) {
+        public AgathaChristieBook(String title) {
             super("Agatha Christie");
+            this.title=title;
         }
 
         @Override
