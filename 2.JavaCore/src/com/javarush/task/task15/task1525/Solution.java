@@ -11,7 +11,6 @@ import java.util.List;
 public class Solution {
     public static List<String> lines = new ArrayList<String>();
     static {
-
         try {
             try (BufferedReader reader=new BufferedReader(new InputStreamReader(new FileInputStream(Statics.FILE_NAME)))){
                 String line;
