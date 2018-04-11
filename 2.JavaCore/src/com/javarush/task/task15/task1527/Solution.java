@@ -19,17 +19,17 @@ public class Solution {
         BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
         try {
             String url = reader.readLine();
-            System.out.println(Parameters(url));
-            System.out.println();
-            System.out.println();
             Map<String,String>test=Param(url);
             for (Map.Entry<String,String>item:test.entrySet()){
                 System.out.print(item.getKey()+ " ");
             }
+            System.out.println();
+            ObjParam(test);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public static void alert(double value) {
@@ -55,6 +55,16 @@ public class Solution {
                 }
         }
         return p;
+    }
+    static void ObjParam(Map<String,String> map){
+        if (map.containsKey("obj")) {
+            try {
+                double d = Double.parseDouble(map.get("obj"));
+                alert(d);
+            }catch (Exception e){
+                alert(map.get("obj"));
+            }
+        }
     }
 
 }
