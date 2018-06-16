@@ -21,10 +21,11 @@ public class Solution {
                     e.printStackTrace();
                 }
                 System.out.println(toString());
-                countIndexUp+=1;
+
 
                 if (countIndexUp==number)
                     return;
+                countIndexUp+=1;
 
             }
         }
