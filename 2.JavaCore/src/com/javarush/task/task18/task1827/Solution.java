@@ -10,12 +10,11 @@ public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader reader=new BufferedReader(new InputStreamReader(System.in));
         String fileName=reader.readLine();
-        int a=args.length;
         if (args.length==4&&args[0].equals("-c")) {
             int id = getId(fileName)+1;
             try(BufferedWriter writer=new BufferedWriter(new FileWriter(fileName,true))) {
                 String resultString=productStr(id,args);
-                writer.write(resultString+"\r\n");
+                writer.write("\r\n"+resultString);
                 writer.flush();
             }
         }
