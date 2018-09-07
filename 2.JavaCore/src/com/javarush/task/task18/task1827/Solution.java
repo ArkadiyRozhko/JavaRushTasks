@@ -14,7 +14,11 @@ public class Solution {
             int id = getId(fileName)+1;
             try(BufferedWriter writer=new BufferedWriter(new FileWriter(fileName,true))) {
                 String resultString=productStr(id,args);
+                if (id==1){
+                    writer.write(resultString);
+                }else {
                 writer.write("\r\n"+resultString);
+                }
                 writer.flush();
             }
         }
@@ -24,7 +28,7 @@ public class Solution {
         try(BufferedReader reader=new BufferedReader(new FileReader(filePath))) {
             String str;
             while ((str=reader.readLine())!=null){
-                int id =Integer.parseInt(str.substring(0,8).trim());
+                int id = Integer.parseInt(str.substring(0, 8).trim());
                 if (id >maxId) {
                     maxId=id;
                 }
