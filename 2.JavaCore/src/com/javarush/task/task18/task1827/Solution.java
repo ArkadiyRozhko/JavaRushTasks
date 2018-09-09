@@ -47,7 +47,7 @@ public class Solution {
         String price = arguments[2];
         String quantity = arguments[3];
         int countSpaceId=8-stringId.length();
-        for (int i = 0; i <countSpaceId; i++) {
+        for (int i = 0; i <countSpaceId; i++) {  
             stringId=stringId+" ";
         }
         int countSpaceProduct=30-productName.length();
