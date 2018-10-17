@@ -14,7 +14,16 @@ public class Solution {
         reader.close();
         BufferedReader bufferedReader=new BufferedReader(new FileReader(fileIn));
         BufferedWriter writer=new BufferedWriter(new FileWriter(fileOut));
+        StringBuilder builder=new StringBuilder();
 
-
+        while (bufferedReader.ready()){
+            int data=bufferedReader.read();
+            builder.append((char) data);
+        }
+        bufferedReader.close();
+        String result=builder.toString().replaceAll("\\p{Punct}", "");
+        String s=result.replaceAll("\n","");
+        writer.write(s);
+        writer.close();
     }
 }
