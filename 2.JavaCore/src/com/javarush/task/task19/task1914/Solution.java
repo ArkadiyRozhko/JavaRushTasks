@@ -1,0 +1,47 @@
+package com.javarush.task.task19.task1914;
+
+/* 
+Решаем пример
+*/
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+public class Solution {
+    public static TestString testString = new TestString();
+
+    public static void main(String[] args) {
+        PrintStream oldStream=System.out;
+        ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
+        PrintStream newStream=new PrintStream(byteArrayOutputStream);
+        System.setOut(newStream);
+        testString.printSomething();
+        System.setOut(oldStream);
+        String s=byteArrayOutputStream.toString();
+        String resultStr=s.replaceAll("\r\n","");
+        char[] chars=resultStr.toCharArray();
+        int firstDigit=Integer.parseInt(s.substring(0,1));
+        int secondDigit=Integer.parseInt(s.substring(4,5));
+        switch (chars[2]){
+            case '+':
+                int result = firstDigit+secondDigit;
+                System.out.println(resultStr+result);
+                break;
+            case '-':
+                int result1 = firstDigit-secondDigit;
+                System.out.println(resultStr+result1);
+                break;
+            case '*':
+                int result2 = firstDigit*secondDigit;
+                System.out.println(resultStr+result2);
+                break;
+        }
+    }
+
+    public static class TestString {
+        public void printSomething() {
+            System.out.println("3 + 6 = ");
+        }
+    }
+}
+
