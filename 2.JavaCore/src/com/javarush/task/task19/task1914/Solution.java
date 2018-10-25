@@ -19,19 +19,19 @@ public class Solution {
         System.setOut(oldStream);
         String s=byteArrayOutputStream.toString();
         String resultStr=s.replaceAll("\r\n","");
-        char[] chars=resultStr.toCharArray();
-        int firstDigit=Integer.parseInt(s.substring(0,1));
-        int secondDigit=Integer.parseInt(s.substring(4,5));
-        switch (chars[2]){
-            case '+':
+        String[] strings=resultStr.split(" ");
+        int firstDigit=Integer.parseInt(strings[0]);
+        int secondDigit=Integer.parseInt(strings[2]);
+        switch (strings[1]){
+            case "+":
                 int result = firstDigit+secondDigit;
                 System.out.println(resultStr+result);
                 break;
-            case '-':
+            case "-":
                 int result1 = firstDigit-secondDigit;
                 System.out.println(resultStr+result1);
                 break;
-            case '*':
+            case "*":
                 int result2 = firstDigit*secondDigit;
                 System.out.println(resultStr+result2);
                 break;
