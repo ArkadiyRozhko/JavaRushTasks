@@ -30,10 +30,21 @@ public class Solution {
         String beginTag="<"+tag;
         String endTag="</"+tag+">";
         ArrayList<String>strList=new ArrayList<>();
-
-
-
-
+        StringBuilder builder=new StringBuilder(str);
+        while (!(builder.toString().isEmpty())){
+            int firstIndex=builder.indexOf(beginTag);
+            int endIndex=lastIndexOf(builder.toString(),endTag);
+            strList.add(builder.toString().substring(firstIndex,endIndex));
+            builder.substring(endIndex);
+        }
         return  strList;
+    }
+    public static int lastIndexOf(String str,String tag){
+        int count=0;
+        String beginTag="<"+tag;
+        String endTag="</"+tag+">";
+
+        int lastIndexOffTag=str.indexOf(endTag);
+
     }
 }
