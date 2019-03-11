@@ -30,12 +30,13 @@ public class Solution {
         String beginTag="<"+tag;
         String endTag="</"+tag+">";
         ArrayList<String>strList=new ArrayList<>();
-        StringBuilder builder=new StringBuilder(str);
-        while (!(builder.toString().isEmpty())){
-            int firstIndex=builder.indexOf(beginTag);
-            int endIndex=lastIndexOf(builder.toString(),endTag);
-            strList.add(builder.toString().substring(firstIndex,endIndex));
-            builder.substring(endIndex);
+        String str1=str;
+        //StringBuilder builder=new StringBuilder(str);
+        while (!(str1.isEmpty())){
+            int firstIndex=str1.indexOf(beginTag);
+            int endIndex=lastIndexOf(str1,tag);
+            strList.add(str1.substring(firstIndex,endIndex));
+            str1=str1.substring(endIndex);
         }
         return  strList;
     }
@@ -45,6 +46,15 @@ public class Solution {
         String endTag="</"+tag+">";
 
         int lastIndexOffTag=str.indexOf(endTag);
+        int firstIndexOfTag=str.indexOf(beginTag);
+        while (firstIndexOfTag<lastIndexOffTag){
+            firstIndexOfTag=str.indexOf(beginTag,firstIndexOfTag+1);
+            count++;
+        }
+        for (int i = count; i >0 ; i--) {
+            lastIndexOffTag=str.indexOf(endTag,lastIndexOffTag+1);
+        }
+        return lastIndexOffTag;
 
     }
 }
