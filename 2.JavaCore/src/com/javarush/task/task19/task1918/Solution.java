@@ -21,7 +21,7 @@ public class Solution {
             while ((c=fileReader.read())!=-1){
                 result+=(char)c;
             }
-        }
+        }        
         ArrayList<String> list=tagList(result,args[0]);
         for (String s:list
              ) {
@@ -35,11 +35,27 @@ public class Solution {
         ArrayList<String>strList=new ArrayList<>();
         String str1=str;
         //StringBuilder builder=new StringBuilder(str);
-        while (!(str1.isEmpty())){
+        while (!(str1.isEmpty())&&str1.indexOf(beginTag)!=-1){
             int firstIndex=str1.indexOf(beginTag);
             int endIndex=lastIndexOf(str1,tag);
             strList.add(str1.substring(firstIndex,endIndex));
-            str1=str1.substring(endIndex);
+            String temp;
+            String temp1;
+
+            if ((str1.charAt(firstIndex+beginTag.length()))=='>') {
+                temp=str1.substring(firstIndex+beginTag.length()+1,endIndex-endTag.length());
+            }else {
+                temp = str1.substring(firstIndex + beginTag.length(), endIndex - endTag.length());
+            }
+            temp1=str1.substring(endIndex);
+            str1=temp+temp1;
+
+
+//            str1=str1.substring(firstIndex+beginTag.length())+str1.substring(0,endIndex-endTag.length())+str1.substring(endIndex);
+//            String temp=str1.substring(0,endIndex-endTag.length());
+//            String temp1=str1.substring(endIndex);
+//            str1=temp+temp1;
+
         }
         return  strList;
     }
