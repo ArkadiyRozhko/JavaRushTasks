@@ -16,36 +16,38 @@ public class Solution {
         try(BufferedReader reader=new BufferedReader(new FileReader(args[0]))){
             String line;
             while ((line=reader.readLine())!=null){
+                if (line.isEmpty()) {
+                    continue;
+                }
                 String[]temp=line.split(" ");
                 if (Emloee.get(temp[0]) != null) {
-                    Emloee.put(temp[0],Double.parseDouble(temp[1])+Double.parseDouble(temp[1]));
+                    Emloee.put(temp[0],Emloee.get(temp[0])+Double.parseDouble(temp[1]));
                 }else {
                     Emloee.put(temp[0],Double.parseDouble(temp[1]));
                 }
             }
+
+
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Double max=0.0;
-        for (Double d:Emloee.values()
-             ) {
-            if (d >max) {
-                max=d;
+        Double max=Collections.max(Emloee.values());
+//        for (Double d:Emloee.values()
+//                ) {
+//            if (d>=max) {
+//                max=d;
+//            }
+//        }
+        for (Map.Entry<String,Double> item:Emloee.entrySet()
+                ) {
+            String k=item.getKey();
+            Double v=item.getValue();
+            if (v.equals(max)) {
+                System.out.println(k);
             }
-        }
-        List<String>names=new ArrayList<>();
-        for (String s:Emloee.keySet()
-             ) {
-            if (Emloee.get(s) == max) {
-                names.add(s);
-            }
-        }
-        Collections.sort(names);
-        for (String s:names
-             ) {
-            System.out.println(s);
         }
 
     }
