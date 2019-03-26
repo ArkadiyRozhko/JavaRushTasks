@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /* 
@@ -17,8 +18,17 @@ public class Solution {
     public static void main(String[] args) {
         try(BufferedReader reader=new BufferedReader(new FileReader(args[0]))) {
             String line;
+            String name;
+            Date birthDate;
+            String[]strings;
             while ((line=reader.readLine())!=null){
-                String[]strings=line.split(" ");
+                strings=line.split(" ");
+                for (int i=0;i<strings.length;i++){
+                    if (isDigit(strings[i])) {
+
+                    }
+                }
+
 
 
             }
