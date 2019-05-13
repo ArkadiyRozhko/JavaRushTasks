@@ -40,11 +40,10 @@ public class Solution {
                             count++;
                         } else {
                             name += strings[i] + " ";
-                            name=name.trim();
                         }
                     }
                     Calendar calendar = new GregorianCalendar(year, month-1, day);
-                    Person p = new Person(name, calendar.getTime());
+                    Person p = new Person(name.trim(), calendar.getTime());
                     PEOPLE.add(p);
                 }
             }
