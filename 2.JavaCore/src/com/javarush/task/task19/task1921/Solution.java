@@ -38,9 +38,8 @@ public class Solution {
                                 year = Integer.parseInt(strings[i]);
                             }
                             count++;
-                        } else {
-                            name += strings[i] + " ";
-                        }
+                        } else name += strings[i] + " ";
+
                     }
                     Calendar calendar = new GregorianCalendar(year, month-1, day);
                     Person p = new Person(name.trim(), calendar.getTime());
