@@ -16,8 +16,14 @@ public class Solution {
             String line;
             String[] lineWords;
             while ((line=reader.readLine())!=null){
+                String resultLine="";
                 lineWords=line.split(" ");
-
+                for (int i = 0; i < lineWords.length; i++) {
+                    if (lineWords[i].matches(".*\\d.*")) {
+                        resultLine+=lineWords[i]+" ";
+                    }
+                }
+                writer.write(resultLine);
             }
         }
 
