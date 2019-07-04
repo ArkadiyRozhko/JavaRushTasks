@@ -23,7 +23,7 @@ public class Solution {
             User user=new User();
             user.setFirstName("Вася");
             user.setLastName("Пупкын");
-            user.setCountry(Country("Ukraine"));
+            user.setCountry(User.Country.UKRAINE);
             user.setMale(true);
             user.setBirthDate(new Date());
             javaRush.users.add(user);
@@ -61,7 +61,7 @@ public class Solution {
                     writer.println(users.get(i).getLastName());
                     writer.println(users.get(i).getBirthDate().getTime());
                     writer.println(users.get(i).isMale());
-                    writer.println(users.get(i).getCountry().getDisplayName());
+                    writer.println(users.get(i).getCountry());
                     writer.flush();
                 }
             }
