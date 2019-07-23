@@ -11,6 +11,7 @@ public class Solution {
 
     public static class A {
         private void method1() {
+
             System.out.println("A class, method1");
         }
 
