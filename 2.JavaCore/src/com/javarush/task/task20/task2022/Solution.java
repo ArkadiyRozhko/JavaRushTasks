@@ -7,10 +7,11 @@ import java.io.*;
 */
 public class Solution implements Serializable, AutoCloseable {
     transient private FileOutputStream stream;
-    String fileName;
+    private String fileName;
 
     public Solution(String fileName) throws FileNotFoundException {
         this.stream = new FileOutputStream(fileName);
+        this.fileName=fileName;
     }
 
     public void writeObject(String string) throws IOException {
@@ -34,7 +35,7 @@ public class Solution implements Serializable, AutoCloseable {
         stream.close();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
 
     }
 }
