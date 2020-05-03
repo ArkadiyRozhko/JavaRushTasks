@@ -2,17 +2,33 @@ package com.javarush.task.task20.task2025;
 
 import javafx.print.Collation;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 /*
 Алгоритмы-числа
 */
 public class Solution {
     public static long[] getNumbers(long N) {
-        long[] result = null;
+        SortedSet<Long> numberSet = new TreeSet<>();
+        while (Long.parseLong(arrayDigitToString(tempDigit))<N){
+            generateDigit(tempDigit.length-1);
+            long sumPow=sumPow(tempDigit);
+            if (isArmstrongDigit(sumPow)) {
+                numberSet.add(sumPow);
+            }
+        }
+        long[] result =new long[numberSet.size()];
+        Iterator<Long> itr = numberSet.iterator();
+        int i=0;
+        while (itr.hasNext()){
+
+            result[i]=itr.next();
+            ++i;
+        }
         return result;
     }
+
+    static  int tempDigit[]=new int[19];
     static long[][]powTable;
     static {
         powTable = powTable();
@@ -29,79 +45,78 @@ public class Solution {
         }
         return result;
     }
+
     static int countOfNumbers(long numb){
         int result=Long.toString(numb).length();
         return result;
     }
-    static ArrayList<Integer> fragmentedNumber(Long numb){
-        ArrayList<Integer>result=new ArrayList<>();
-        int tmp;
-        while (numb>0){
-            result.add((int)(numb%10));
+
+    static int [] fragmentedNumber(Long numb){
+        int []result=new int[countOfNumbers(numb)];
+        for (int i = result.length-1; i >=0; i--) {
+            result[i]=((int)(numb%10));
             numb/=10;
         }
-
-        Collections.reverse(result);
         return result;
     }
-    static ArrayList<Long> sumPow(long numb){
-       // long[][]powTable=powTable();
-        ArrayList<Long>result=new ArrayList<>();
-        for (long i = 1; i <numb ; i++) {
-            if (isUniqueDigit(i)) {
-                System.out.println(i);
-                int power=countOfNumbers(i);
-                ArrayList<Integer>numbers=fragmentedNumber(i);
-                long powerSum=0;
-                for (int j = 0; j <numbers.size() ; j++) {
-                    powerSum+=powTable[numbers.get(j)][power];
-                }
 
-                    result.add(powerSum);
-            }
-
+    static boolean isArmstrongDigit(long numb) {
+        boolean result = false;
+        int[] arr = fragmentedNumber(numb);
+        long l = sumPow(arr);
+        if (numb == l) {
+            result = true;
         }
-
         return result;
     }
-    static boolean isUniqueDigit(long numb){
-        ArrayList<Integer> numbers=fragmentedNumber(numb);
-        for (int i = 0; i <numbers.size()-1 ; i++) {
-            if (numbers.get(i)>numbers.get(i+1)) {
-                return false;
-            }
-        }
-        return true;
+
+
+
+    //----------------------------------------------------------------
+
+   static void generateDigit(int x){
+       if (x>0) {
+           if (tempDigit[x]==9) {
+               tempDigit[x]=0;
+               generateDigit(x-1);
+           }else if (tempDigit[x-1]!=0&&tempDigit[x]==0) {
+               tempDigit[x]=tempDigit[x-1];
+           }else {
+               tempDigit[x] = tempDigit[x] + 1;
+           }
+       }
+
     }
 
+    static int pow(int[] mass){
+        String str=arrayDigitToString(mass);
+        int count = str.length();
+        return count;
+    }
+
+    static String arrayDigitToString(int[] array){
+        String s;
+        return s=Arrays.toString(array).replaceAll("\\[|\\]|,|\\s", "").replaceFirst("^0+(?!$)", "");
+    }
+
+    static  long sumPow(int [] mass){
+        int pow=pow(mass);
+        int index=mass.length-pow;
+        long result=0;
+        for (int i = index; i <=mass.length-1 ; i++) {
+            result+=powTable[mass[i]][pow];
+        }
+        return result;
+    }
 
     public static void main(String[] args) {
+       /* long[] armstrong=getNumbers(Long.MAX_VALUE);
+        System.out.println(Arrays.toString(armstrong));*/
 
-//        System.out.println(countOfNumbers(125));
-//        long[][]tmp=powTable();
-//        for (int i = 0; i <tmp.length ; i++) {
-//            for (int j = 0; j <tmp[i].length ; j++) {
-//                System.out.print(tmp[i][j]+"  ");
-//            }
-//            System.out.println();
-//        }
-//
-//        for (Integer i:fragmentedNumber(100l)
-//             ) {
-//            System.out.print(i);
-//        }
-        long startTime=System.currentTimeMillis();
-        ArrayList<Long>test=sumPow(Long.MAX_VALUE);
-        long timeSpent=System.currentTimeMillis()-startTime;
-        System.out.println(timeSpent/1000);
-        System.out.println("--------------------------------------------------");
-        for (Long item:test
-             ) {
-            System.out.println(item);
+        for (int i = 0; i <10000 ; i++) {
+            generateDigit(tempDigit.length-1);
+            System.out.println(Arrays.toString(tempDigit).replaceAll("\\[|\\]|,|\\s", "").replaceFirst("^0+(?!$)", ""));
         }
-
-
-
 
     }
 }
