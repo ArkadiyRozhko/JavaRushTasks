@@ -28,10 +28,12 @@ public class Solution {
         return result;
     }
 
-    static  int tempDigit[]=new int[19];
+    static  int[] tempDigit=new int[19];
+
     static long[][]powTable;
     static {
         powTable = powTable();
+        //tempDigit[tempDigit.length-1]=1;
     }
 
     static long[][]powTable(){
@@ -76,17 +78,25 @@ public class Solution {
 
    static void generateDigit(int x){
        if (x>0) {
-           if (tempDigit[x]==9) {
-               tempDigit[x]=0;
-               generateDigit(x-1);
-           }else if (tempDigit[x-1]!=0&&tempDigit[x]==0) {
-               tempDigit[x]=tempDigit[x-1];
-           }else {
+
+           if (tempDigit[x] == 9) {
+               tempDigit[x] = 0;
+               generateDigit(x - 1);
+           } else {
                tempDigit[x] = tempDigit[x] + 1;
+           }
+           if (tempDigit[x] == 0) {
+               if (tempDigit[x-1] == 0) {
+                   generateDigit(x-1);
+               }else {
+                   tempDigit[x]=tempDigit[x-1];
+               }
            }
        }
 
-    }
+   }
+
+
 
     static int pow(int[] mass){
         String str=arrayDigitToString(mass);
@@ -113,9 +123,9 @@ public class Solution {
        /* long[] armstrong=getNumbers(Long.MAX_VALUE);
         System.out.println(Arrays.toString(armstrong));*/
 
-        for (int i = 0; i <10000 ; i++) {
+        for (int i = 0; i <1000 ; i++) {
             generateDigit(tempDigit.length-1);
-            System.out.println(Arrays.toString(tempDigit).replaceAll("\\[|\\]|,|\\s", "").replaceFirst("^0+(?!$)", ""));
+            System.out.println(Arrays.toString(tempDigit)/*.replaceAll("\\[|\\]|,|\\s", "").replaceFirst("^0+(?!$)", "")*/);
         }
 
     }
