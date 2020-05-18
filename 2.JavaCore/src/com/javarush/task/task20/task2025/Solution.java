@@ -85,13 +85,13 @@ public class Solution {
            } else {
                tempDigit[x] = tempDigit[x] + 1;
            }
-           if (tempDigit[x] == 0) {
+           /*if (tempDigit[x] == 0) {
                if (tempDigit[x-1] == 0) {
                    generateDigit(x-1);
                }else {
                    tempDigit[x]=tempDigit[x-1];
                }
-           }
+           }*/
        }
 
    }
