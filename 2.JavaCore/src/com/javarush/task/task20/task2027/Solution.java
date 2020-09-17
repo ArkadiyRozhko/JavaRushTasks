@@ -30,7 +30,11 @@ same - (1, 1) - (4, 1)
              ) {
             for (int i = 0; i <crossword.length ; i++) {
                 for (int j = 0; j <crossword[i].length ; j++) {
-
+                    if (crossword[i][j] == word.charAt(0)) {
+                        if (i+word.length()-1<=crossword[i].length){
+                            crossword[i][]
+                        }
+                    }
                 }
 
             }
