@@ -15,6 +15,8 @@ public class Solution {
                 {'m', 'l', 'p', 'r', 'r', 'h'},
                 {'p', 'o', 'e', 'e', 'j', 'j'}
         };
+        System.out.println(crossword[0].length);
+
         detectAllWords(crossword, "home", "same");
         /*
 Ожидаемый результат
@@ -32,7 +34,12 @@ same - (1, 1) - (4, 1)
                 for (int j = 0; j <crossword[i].length ; j++) {
                     if (crossword[i][j] == word.charAt(0)) {
                         if (i+word.length()-1<=crossword[i].length){
-                            crossword[i][]
+                            char [] tmp=new char[word.length()];
+                            for (int k = 0; k <tmp.length; k++) {
+                                tmp[k]=(char) crossword[i+k][j];
+                            }
+                            System.out.println(tmp);
+
                         }
                     }
                 }
