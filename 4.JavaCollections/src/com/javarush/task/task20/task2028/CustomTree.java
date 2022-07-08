@@ -248,5 +248,8 @@ public class CustomTree extends AbstractList<String> implements Cloneable, Seria
         public boolean isAvailableToAddChildren() {
             return this.availableToAddRightChildren || this.availableToAddLeftChildren;
         }
+        public String getParent(String s){
+            return this.parent.elementName;
+        }
     }
 }
